@@ -293,8 +293,8 @@ sub open_2g {
         /z1|z2|z5/ and do {
             $cmd =
                 "start chrome \"$web" . "$zona"
-              . '/stats/online/kpi2ge' . "$zona"
-              . '?tipo=tchhb&nodo='
+              . '/stats/online/kpi2ge-' . "$zona"
+              . '?tipo=hb&nodo='
               . "$site2g"
               . '&fecha=' . "$date" . '"';
             last;
