@@ -409,9 +409,9 @@ sub rxelplog2g_decode_alarms {
         if ( $_ =~ /eaw\s+/ ) {
             my @bsc = split /\s/, $_;
             print "\n";
-            print "*" x 41 . "\n";
-            print "ALARMS SUMMARY [ " . $bsc[2] . " ] ALARMS SUMMARY\n";
-            print "*" x 41 . "\n";
+            print "*" x 63 . "\n";
+            print " " x 11 . "ALARMS SUMMARY [ " . $bsc[2] . " ] ALARMS SUMMARY\n";
+            print "*" x 63 . "\n";
         }
 
         # my flag;
