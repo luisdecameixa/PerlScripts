@@ -176,7 +176,6 @@ sub main {
     }
 }
 
-
 # hex-string to bin-string
 # hex : string
 # return : string
@@ -289,15 +288,15 @@ sub log2g_decode_active_alarms {
 
     while (<$f>) {
         chomp;
-		
-		if ( $_ =~ /eaw\s+/ ) {
-			my @bsc = split /\s/, $_;
-			print "\n";
-			print "*" x 41 . "\n";
-			print "ALARMS SUMMARY [ " . $bsc[2] . " ] ALARMS SUMMARY\n";
-			print "*" x 41 . "\n";
-		}
-		
+
+        if ( $_ =~ /eaw\s+/ ) {
+            my @bsc = split /\s/, $_;
+            print "\n";
+            print "*" x 41 . "\n";
+            print "ALARMS SUMMARY [ " . $bsc[2] . " ] ALARMS SUMMARY\n";
+            print "*" x 41 . "\n";
+        }
+
         if ( $_ =~ /^MANAGED OBJECT FAULT INFORMATION$/ ) {
             my $dev;
             while (<$f>) {
@@ -407,6 +406,13 @@ sub rxelplog2g_decode_alarms {
     my @out;
     while (<$f>) {
         chomp;
+        if ( $_ =~ /eaw\s+/ ) {
+            my @bsc = split /\s/, $_;
+            print "\n";
+            print "*" x 41 . "\n";
+            print "ALARMS SUMMARY [ " . $bsc[2] . " ] ALARMS SUMMARY\n";
+            print "*" x 41 . "\n";
+        }
 
         # my flag;
         # flag = 1 if ( $line =~ /^ERROR LOG DATA$/ );
@@ -491,7 +497,6 @@ sub rxelplog2g_decode_alarms {
         }
     }
 }
-
 
 BEGIN {
     # alarms database
