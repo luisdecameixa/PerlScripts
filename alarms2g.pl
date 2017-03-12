@@ -289,7 +289,15 @@ sub log2g_decode_active_alarms {
 
     while (<$f>) {
         chomp;
-
+		
+		if ( $_ =~ /eaw\s+/ ) {
+			my @bsc = split /\s/, $_;
+			print "\n";
+			print "*" x 41 . "\n";
+			print "ALARMS SUMMARY [ " . $bsc[2] . " ] ALARMS SUMMARY\n";
+			print "*" x 41 . "\n";
+		}
+		
         if ( $_ =~ /^MANAGED OBJECT FAULT INFORMATION$/ ) {
             my $dev;
             while (<$f>) {
