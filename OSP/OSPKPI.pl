@@ -285,7 +285,7 @@ sub open_2g {
     my $code    = shift;
     my $zona    = shift;
     my $date    = shift;
-
+	
     my $site2g = $presite . $code;
     my $cmd;
 
@@ -303,7 +303,7 @@ sub open_2g {
         /z3/ and do {
             $cmd =
                 "start chrome \"$web" . "$zona"
-              . '/stats/online/kpi2gh-z3?tipo=rabhb&nodo='
+              . '/stats/online/kpi2ge-z3?tipo=qrl&nodo='
               . "$site2g"
               . '&fecha=' . "$date" . '"';
             last;
