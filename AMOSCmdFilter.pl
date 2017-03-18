@@ -7,7 +7,7 @@
 
 #
 # Objetivo : Filtar printado de los comandos del AMOS (logs)
-#  perl AMOSCmdFilter.pl <logfile>
+#  perl AMOSCmdFilter.pl [alt|hgetm_alarmport] <logfile>
 #
 
 use strict;
@@ -55,14 +55,15 @@ sub main {
             hgetm_alarmport_filter( \@a );
             last;
         };
-
-        warn usage();
+		
+		warn usage();
     }
 
     print $msgend;
     exit 0;
 
 }
+
 
 sub alt_filter {
     my @lines = @{ $_[0] };
@@ -74,7 +75,7 @@ sub alt_filter {
             #print "LINEA >$line[$i]<\n";
 
             my ( $nodo, $command ) = split /\s+/, $lines[$i], 3;
-            my $mayor;
+			my $mayor;
             $mayor = chop $nodo if ( defined $nodo );
             if ( defined $command && $mayor eq '>' ) {
                 for ($command) {
@@ -116,7 +117,7 @@ sub hgetm_alarmport_filter {
             my ( $nodo, $command ) = split /\s+/, $lines[$i], 3;
 
             #print $command . "\n";
-            my $mayor;
+			my $mayor;
             $mayor = chop $nodo if ( defined $nodo );
             if ( defined $command && $mayor eq '>' ) {
                 for ($command) {
@@ -145,4 +146,7 @@ sub hgetm_alarmport_filter {
         }
     }
 }
+
+
+
 
