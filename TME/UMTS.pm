@@ -51,7 +51,7 @@ sub getCells {
 }
 
 
-# Pilla los NodosB fijandose en el nombre del NodoB (nueva version de la funcion anterior)
+# Pilla los NodosB fijandose en el nombre del NodoB
 # Input : site code
 sub ngetNodeB {
     my $sitecode = shift;
