@@ -10,7 +10,7 @@
 
 use strict;
 use warnings;
-use diagnostics -verbose;
+use diagnostics;
 
 use LWP::Simple;
 use HTML::TableExtract;
@@ -25,6 +25,7 @@ sub usagemsg {
     return <<"END_USAGE";
 Usage : Usage : TME_node_report <source>
 <source> : sites (file)
+The output files will be created in directory NodeReports
  * Send feedback and/or bugs to luisdecameixa\@coit.es *
 END_USAGE
 }

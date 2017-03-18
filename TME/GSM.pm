@@ -1,7 +1,7 @@
 package GSM;
 use strict;
 use warnings;
-use diagnostics -verbose;
+use diagnostics;
 
 use LWP::Simple;
 use HTML::TableExtract;
@@ -12,7 +12,7 @@ our @EXPORT_OK = qw(getCells getBSCCells);
 sub getCells {
     my $sitecode = shift;
     my $cp       = substr( $sitecode, 0, 2 );
-    my $code     = substr( $sitecode, 3, 6 );
+    my $code     = substr( $sitecode, 2, 5 );
     my @ret      = ();
     ## Interpretación del contenido
     my $html = get( 'http://10.34.213.161/CNAI/KPI/TM/consultaEmplazamiento.php?CodClave=' . "$cp" . " " . "$code" )
@@ -50,7 +50,7 @@ sub getCells {
 sub getBSCCells {
     my $sitecode = shift;
     my $cp       = substr( $sitecode, 0, 2 );
-    my $code     = substr( $sitecode, 3, 6 );
+    my $code     = substr( $sitecode, 2, 5 );
     my %ret      = ();
     ## Interpretación del contenido
     my $html = get( 'http://10.34.213.161/CNAI/KPI/TM/consultaEmplazamiento.php?CodClave=' . "$cp" . " " . "$code" )

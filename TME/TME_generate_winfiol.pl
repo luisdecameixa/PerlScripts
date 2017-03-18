@@ -11,7 +11,7 @@
 
 use strict;
 use warnings;
-use diagnostics -verbose;
+use diagnostics;
 
 use LWP::Simple;
 use HTML::TableExtract;

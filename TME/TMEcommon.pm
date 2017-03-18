@@ -1,12 +1,12 @@
 package TMEcommon;
 use strict;
 use warnings;
-use diagnostics -verbose;
+use diagnostics;
 
 use String::Strip;    # 35% faster than the regex methods.
 use LWP::Simple;
 use Exporter qw(import);
-our @EXPORT_OK = qw(ftrim getZONA RemoveMultipleElem TestConnection);
+our @EXPORT_OK = qw(ftrim frtrim ftrim getZONA RemoveMultipleElem TestConnection);
 
 # left trim
 sub ltrim { my $s = shift; $s =~ s/^\s+//; return $s }
