@@ -59,8 +59,6 @@ sub main {
         my $sheet = $book->[1];
         for my $i ( 2 .. $sheet->{maxrow} ) {
             push @sites, substr( $sheet->{cell}[3][$i], 0, 7 );
-
-            #print $fh substr( $sheet->{cell}[3][$i], 0, 7 ) . "-#\n";
         }
     }
 
@@ -73,14 +71,13 @@ sub main {
           or die "Could not open input file $inputfilename $!";
         chomp( @sites = <$fin> );
 
-        foreach (@sites) {
-            $_ = OSPcommon::trim $_;
-        }
+		@sites = map {OSPcommon::ftrim ($_)} @sites;
+		
         close $fin;
     }
 
     # Elimina lineas vacias, y repeticiones multiples en @sites
-    my $refsites = OSPcommon::RemoveMultipleElem \@sites;
+    my $refsites = OSPcommon::RemoveMultipleElem (\@sites);
     @sites = grep /\S/, @$refsites;
 
     # Abrir fichero de salida.
