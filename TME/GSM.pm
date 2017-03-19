@@ -43,7 +43,6 @@ sub getCells {
 
     }
 	
-	#if (@ret) { @ret = grep /\S/, @ret }
     if (@ret) {
         my $refret = TMEcommon::RemoveMultipleElem (\@ret);
         @ret = grep /\S/, @$refret;

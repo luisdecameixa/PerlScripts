@@ -48,10 +48,8 @@ sub main {
     chomp( my @sites = <$filesites> );
     close $filesites;
 	
-	foreach (@sites) {
-		$_ = substr $_, 0, 7;
-	}
-
+	@sites = map {substr $_, 0, 7} @sites;
+	
     # Elimina lineas vacias, y repeticiones multiples en @sites
     my $refsites = TMEcommon::RemoveMultipleElem (\@sites);
     @sites = grep /\S/, @$refsites;
