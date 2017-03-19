@@ -48,7 +48,7 @@ sub main {
     chomp( my @sites = <$filesites> );
     close $filesites;
 	
-	@sites = map {substr $_, 0, 7} @sites;
+    @sites = map {substr $_, 0, 7} @sites;
 	
     # Elimina lineas vacias, y repeticiones multiples en @sites
     my $refsites = TMEcommon::RemoveMultipleElem (\@sites);
