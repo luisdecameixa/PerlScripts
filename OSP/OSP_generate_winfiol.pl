@@ -71,8 +71,7 @@ sub main {
           or die "Could not open input file $inputfilename $!";
         chomp( @sites = <$fin> );
 
-		@sites = map {OSPcommon::ftrim ($_)} @sites;
-		
+	@sites = map {OSPcommon::ftrim ($_)} @sites;
         close $fin;
     }
 
