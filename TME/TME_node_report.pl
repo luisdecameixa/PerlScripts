@@ -42,13 +42,17 @@ sub main {
     TMEcommon::TestConnection();
 
     # Lee los codigos de los sites del fichero sites.txt
-    open (my $filesites, '<', $ARGV[0])
+    open( my $filesites, '<', $ARGV[0] )
       or die "Could not open input file '$ARGV[0]' $!";
     chomp( my @sites = sort <$filesites> );
     close $filesites;
 
+	foreach (@sites) {
+		$_ = substr $_, 0, 7;
+	}
+	
     # Elimina lineas vacias, y repeticiones multiples en @sites
-    my $refsites = TMEcommon::RemoveMultipleElem (\@sites);
+    my $refsites = TMEcommon::RemoveMultipleElem( \@sites );
     @sites = grep /\S/, @$refsites;
 
     # Se crea el directorio para escribir los ficheros de salida
@@ -59,7 +63,7 @@ sub main {
 
     # Ficheros de salida
     my $GSMCellReport = 'GSMCellReport.txt';
-    open( my $fGSMCellReport, '>',"$outputdir/$GSMCellReport" )
+    open( my $fGSMCellReport, '>', "$outputdir/$GSMCellReport" )
       or die "Could not open file '$GSMCellReport' $!";
 
     my $UMTSMADRIDNodeReport = 'UMTSMADRIDNodeReport.txt';

@@ -36,7 +36,7 @@ sub getCells {
         @celda        = grep /\S/, @celda;
         @nodo         = grep /\S/, @nodo;
         @controladora = grep /\S/, @controladora;
-
+		
         for my $i ( 0 .. $#rows ) {
             if ( $tecnologia[$i] eq "UMTS" ) {
                 push @ret, $celda[$i];
@@ -45,7 +45,12 @@ sub getCells {
 
     }
 
-    if (@ret) { @ret = grep /\S/, sort @ret }
+    #if (@ret) { @ret = grep /\S/, @ret }
+    if (@ret) {
+        my $refret = TMEcommon::RemoveMultipleElem (\@ret);
+        @ret = grep /\S/, @$refret;
+    }
+    @ret = sort @ret;
     return \@ret;
 
 }
@@ -78,7 +83,7 @@ sub ngetNodeB {
         @celda        = grep /\S/, @celda;
         @nodo         = grep /\S/, @nodo;
         @controladora = grep /\S/, @controladora;
-
+		
         for my $i ( 0 .. $#rows ) {
             if ( defined $nodo[$i] ) {
                 my $prefix = substr $nodo[$i], 0, 3;
@@ -91,10 +96,12 @@ sub ngetNodeB {
         }
     }
 
+    #if (@ret) { @ret = grep /\S/, @ret }
     if (@ret) {
-        my $refret = TMEcommon::RemoveMultipleElem \@ret;
-        @ret = grep /\S/, sort @$refret;
+        my $refret = TMEcommon::RemoveMultipleElem (\@ret);
+        @ret = grep /\S/, @$refret;
     }
+    @ret = sort @ret;
     return \@ret;
 }
 1;

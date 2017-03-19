@@ -102,6 +102,10 @@ sub main {
       or die "Could not open input file '$ARGV[0]' $!";
     chomp( my @sites = sort <$filesites> );
     close $filesites;
+	
+	foreach (@sites) {
+		$_ = substr $_, 0, 7;
+	}
 
     # Elimina lineas vacias, y repeticiones multiples en @sites
     my $refsites = TMEcommon::RemoveMultipleElem \@sites;
