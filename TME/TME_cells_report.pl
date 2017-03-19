@@ -90,7 +90,7 @@ sub main {
     my $numberargv = $#ARGV + 1;
     if ( $numberargv != 1 ) {
         warn "Usage : TME_cells_report <source>\n";
-		exit 0;
+        exit 0;
     }
 
     # Primero comprobamos acceso al Inevtario de TME
@@ -102,9 +102,10 @@ sub main {
       or die "Could not open input file '$ARGV[0]' $!";
     chomp( my @sites = sort <$filesites> );
     close $filesites;
-	
-	@sites = map {substr $_, 0, 7} @sites;
-	
+
+    @sites = map { TMEcommon::ftrim($_) } @sites;
+    @sites = map { substr $_, 0, 7 } @sites;
+
     # Elimina lineas vacias, y repeticiones multiples en @sites
     my $refsites = TMEcommon::RemoveMultipleElem \@sites;
     @sites = grep /\S/, @$refsites;

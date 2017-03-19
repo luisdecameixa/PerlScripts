@@ -47,11 +47,12 @@ sub main {
       or die "Could not open input file '$ARGV[0]' $!";
     chomp( my @sites = <$filesites> );
     close $filesites;
-	
-    @sites = map {substr $_, 0, 7} @sites;
-	
+
+    @sites = map { TMEcommon::ftrim($_) } @sites;
+    @sites = map { substr $_, 0, 7 } @sites;
+
     # Elimina lineas vacias, y repeticiones multiples en @sites
-    my $refsites = TMEcommon::RemoveMultipleElem (\@sites);
+    my $refsites = TMEcommon::RemoveMultipleElem( \@sites );
     @sites = grep /\S/, @$refsites;
 
     my $TMEsites = $ARGV[1];
